@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Société 4M's - Boxes de Stockage Sécurisés à Lanmeur</title>
+    
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- VARIABLES & PALETTE (VERT, BOIS, GRIS) --- */
+        :root {
+            --vert-foret: #2e5339;
+            --vert-fonce: #1d3724;
+            --bois-chene: #c29b61;
+            --bois-fonce: #a07a44;
+            --gris-clair: #f8fafc;
+            --gris-carte: #ffffff;
+            --gris-texte: #1f2937;
+            --gris-muted: #6b7280;
+            --gris-bordure: #e2e8f0;
+            --white: #ffffff;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--gris-clair);
+            color: var(--gris-texte);
+            line-height: 1.6;
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--gris-bordure);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--vert-foret);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gris-texte);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--bois-chene);
+        }
+
+        .btn-nav {
+            background: var(--vert-foret);
+            color: var(--white) !important;
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--radius);
+            transition: background 0.3s !important;
+        }
+
+        .btn-nav:hover {
+            background: var(--vert-fonce) !important;
+        }
+
+        .btn-pdf-nav {
+            background: transparent;
+            color: var(--bois-fonce) !important;
+            border: 2px solid var(--bois-chene);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: all 0.3s !important;
+        }
+
+        .btn-pdf-nav:hover {
+            background: var(--bois-chene);
+            color: var(--white) !important;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 9rem 2rem 6rem;
+            background: linear-gradient(135deg, var(--vert-fonce), var(--vert-foret));
+            color: var(--white);
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--bois-chene);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            background: var(--bois-fonce);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 0.8rem 1.8rem;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            backdrop-filter: blur(5px);
+            transition: background 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* --- SECTIONS GENERAL --- */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--vert-foret);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--gris-muted);
+        }
+
+        /* --- PRESENTATION (SECTION 1) --- */
+        .about-container {
+            background: var(--gris-carte);
+            padding: 3rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--gris-bordure);
+            margin-bottom: 3rem;
+            text-align: center;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .about-text h3 {
+            color: var(--vert-foret);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        /* --- ATOUTS (SECTION 2) --- */
+        .why-us-container {
+            background: var(--gris-carte);
+            padding: 3rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--gris-bordure);
+        }
+
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .why-us-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .why-us-icon {
+            background: rgba(194, 155, 97, 0.15);
+            color: var(--bois-fonce);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .why-us-text h3 {
+            font-size: 1.25rem;
+            color: var(--vert-foret);
+            margin-bottom: 0.5rem;
+        }
+
+        .why-us-text p {
+            color: var(--gris-muted);
+            font-size: 0.95rem;
+        }
+
+        /* --- GALERIE PHOTOS --- */
+        .photos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .photo-card {
+            background: var(--gris-carte);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--gris-bordure);
+            transition: transform 0.3s;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* --- NOS BOXES (SECTION 3) --- */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .pricing-card {
+            background: var(--gris-carte);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            border: 1px solid var(--gris-bordure);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-header {
+            background: rgba(46, 83, 57, 0.05);
+            padding: 2.5rem 2rem 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--gris-bordure);
+        }
+
+        .pricing-icon {
+            font-size: 2.5rem;
+            color: var(--vert-foret);
+            margin-bottom: 0.8rem;
+        }
+
+        .pricing-header h3 {
+            font-size: 1.8rem;
+            color: var(--vert-foret);
+        }
+
+        .volume-tag {
+            background: var(--vert-foret);
+            color: var(--white);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 0.8rem;
+        }
+
+        .pricing-body {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-specs {
+            list-style: none;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .pricing-specs li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--gris-bordure);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .pricing-specs li span:first-child {
+            color: var(--gris-muted);
+        }
+
+        .pricing-specs li span:last-child {
+            font-weight: 600;
+        }
+
+        /* --- CONTACT --- */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            background: var(--gris-carte);
+            padding: 3rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--gris-bordure);
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1.5rem;
+            color: var(--vert-foret);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+
+        .info-item i {
+            color: var(--bois-chene);
+            width: 25px;
+        }
+
+        .info-item a {
+            color: var(--gris-texte);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .info-item a:hover {
+            color: var(--vert-foret);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--vert-fonce);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 868px) {
+            .nav-links {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <i class="fa-solid fa-warehouse"></i> Société 4M'S
+            </a>
+            <ul class="nav-links">
+                <li><a href="#presentation">Présentation</a></li>
+                <li><a href="#atouts">Atouts</a></li>
+                <li><a href="#galerie">Galerie</a></li>
+                <li><a href="#boxes">Nos Boxes</a></li>
+                <li><a href="flyer.pdf" download class="btn-pdf-nav"><i class="fa-solid fa-file-pdf"></i> Flyer PDF</a></li>
+                <li><a href="#contact" class="btn-nav">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Vos biens en sécurité, en toute liberté</h1>
+            <p>Location de boxes de stockage individuels à Lanmeur. Des espaces robustes, au sec et accessibles 24h/24 et 7j/7.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary"><i class="fa-solid fa-phone"></i> Nous contacter</a>
+                <a href="flyer.pdf" download class="btn-secondary"><i class="fa-solid fa-file-arrow-down"></i> Télécharger la fiche (PDF)</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 1 : PRESENTATION -->
+    <section id="presentation">
+        <div class="about-container">
+            <div class="about-text">
+                <h3>Un espace de stockage pensé pour vous</h3>
+                <p>Que vous soyez en plein déménagement, en phase de travaux, ou un professionnel recherchant un espace de stockage pour votre matériel, <strong>Société 4M's</strong> met à votre disposition des locaux de qualité à Lanmeur.</p>
+                <p style="margin-top: 1rem; color: var(--gris-muted);">Nos structures en bois robustes sont abritées sous un hangar fermé pour garantir une conservation parfaite de vos meubles, cartons et équipements.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2 : ATOUTS -->
+    <section id="atouts">
+        <div class="section-title">
+            <h2>Pourquoi choisir Société 4M's ?</h2>
+            <p>Une solution de stockage fiable et flexible à Lanmeur</p>
+        </div>
+        
+        <div class="why-us-container">
+            <div class="why-us-grid">
+                <div class="why-us-item">
+                    <div class="why-us-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div class="why-us-text">
+                        <h3>Sécurité Maximale</h3>
+                        <p>Vos biens sont abrités dans un hangar fermé. L'accès est protégé et réservé exclusivement aux locataires.</p>
+                    </div>
+                </div>
+
+                <div class="why-us-item">
+                    <div class="why-us-icon">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <div class="why-us-text">
+                        <h3>Accès 24h/24 & 7j/7</h3>
+                        <p>Déposez ou récupérez vos affaires à tout moment, de jour comme de nuit, selon vos besoins.</p>
+                    </div>
+                </div>
+
+                <div class="why-us-item">
+                    <div class="why-us-icon">
+                        <i class="fa-solid fa-cloud-sun"></i>
+                    </div>
+                    <div class="why-us-text">
+                        <h3>Protection contre l'humidité & les nuisibles</h3>
+                        <p>Vos meubles et affaires restent au sec, abrités des intempéries et préservés dans un environnement propre.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERIE PHOTO (ENTRE ATOUTS ET NOS BOXES) -->
+    <section id="galerie" style="padding-top: 1rem;">
+        <div class="section-title">
+            <h2>Découvrez nos installations</h2>
+            <p>Un aperçu de nos infrastructures de stockage à Lanmeur</p>
+        </div>
+        <div class="photos-grid">
+            <div class="photo-card">
+                <img src="hangar-interieur.jpg" alt="Intérieur du hangar de stockage">
+            </div>
+            <div class="photo-card">
+                <img src="securite.jpg" alt="Sécurité et accès au hangar">
+            </div>
+            <div class="photo-card">
+                <img src="box-interieur.jpg" alt="Vue intérieure d'un box de stockage">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3 : NOS BOXES -->
+    <section id="boxes">
+        <div class="section-title">
+            <h2>Nos Formats de Boxes</h2>
+            <p>Des dimensions adaptées à tous vos volumes de stockage</p>
+        </div>
+        <div class="pricing-grid">
+            
+            <!-- Box Standard (39 m3) -->
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <div class="pricing-icon"><i class="fa-solid fa-box"></i></div>
+                    <h3>Box Standard</h3>
+                    <span class="volume-tag">Capacité : 39 m³</span>
+                </div>
+                <div class="pricing-body">
+                    <ul class="pricing-specs">
+                        <li><span>Surface au sol</span> <span>15 m²</span></li>
+                        <li><span>Longueur</span> <span>6,25 m</span></li>
+                        <li><span>Largeur</span> <span>2,50 m</span></li>
+                        <li><span>Hauteur</span> <span>2,50 m</span></li>
+                    </ul>
+                    <a href="#contact" class="btn-primary" style="width: 100%; justify-content: center;">Réserver ce box</a>
+                </div>
+            </div>
+
+            <!-- Box XL (53 m3) -->
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <div class="pricing-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
+                    <h3>Box XL</h3>
+                    <span class="volume-tag">Capacité : 53 m³</span>
+                </div>
+                <div class="pricing-body">
+                    <ul class="pricing-specs">
+                        <li><span>Surface au sol</span> <span>21 m²</span></li>
+                        <li><span>Longueur</span> <span>9,15 m</span></li>
+                        <li><span>Largeur</span> <span>2,35 m</span></li>
+                        <li><span>Hauteur</span> <span>2,50 m</span></li>
+                    </ul>
+                    <a href="#contact" class="btn-primary" style="width: 100%; justify-content: center;">Réserver ce box</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="section-title">
+            <h2>Contactez-nous</h2>
+            <p>Renseignements, disponibilités et réservations</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Société 4M'S</h3>
+                <div class="info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>4, rue de Kervoac, 29620 Lanmeur</span>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <a href="tel:0661125415">06.61.12.54.15</a>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <a href="mailto:moraseric@wanadoo.fr">moraseric@wanadoo.fr</a>
+                </div>
+            </div>
+            <div>
+                <h3>Localisation & Accès</h3>
+                <p style="color: var(--gris-muted); margin-top: 1rem; margin-bottom: 1.5rem;">
+                    Nos boxes sont situés à Lanmeur. Pour visiter un box ou finaliser votre contrat de location, prenez directement contact par téléphone ou e-mail.
+                </p>
+                <a href="tel:0661125415" class="btn-primary"><i class="fa-solid fa-headset"></i> Appeler maintenant</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Société 4M'S - Tous droits réservés.</p>
+    </footer>
+
+</body>
+</html>
